@@ -3,16 +3,37 @@
 #include "Thread.h"
 #include "LoopThread.h"
 #include "AsyncLoad.h"
+#include "ThreadPool.h"
+
+void Value(int num)
+{
+	std::cout << num << std::endl;
+}
 
 int main(int argc, char* argv[])
 {
-	AsyncLoad load;
-	load.Load("");
-	std::cout << "開始" << std::endl;
-	while (!load.IsLoaded())
-	{
-		// ロード中
+	{	
+		ThreadPool tp;
+		std::cout << "開始" << std::endl;
+		tp.Task([&]() {
+			std::cout << "A" << std::endl;
+			});
+		tp.Task([&]() {
+			std::cout << "B" << std::endl;});
+		tp.Task([&]() {Value(0); });
+		tp.Task([&]() {Value(1); });
+		tp.Task([&]() {Value(2); });
+		tp.Task([&]() {Value(3); });
+		tp.Task([&]() {Value(4); });
+		tp.Task([&]() {Value(5); });
+		tp.Task([&]() {Value(6); });
+		tp.Task([&]() {Value(7); });
+		tp.Task([&]() {Value(8); });
+		tp.Task([&]() {Value(9); });
+		tp.Task([&]() {Value(10); });
+		tp.Task([&]() {Value(11); });
+		Sleep(5000);
+		std::cout << "終了" << std::endl;
 	}
-	std::cout << "終了" << std::endl;
 	return 0;
 }

@@ -144,11 +144,13 @@
     <ClCompile Include="LoopThread.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Thread.cpp" />
+    <ClCompile Include="ThreadPool.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AsyncLoad.h" />
     <ClInclude Include="LoopThread.h" />
     <ClInclude Include="Thread.h" />
+    <ClInclude Include="ThreadPool.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
